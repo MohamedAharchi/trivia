@@ -11,10 +11,8 @@ namespace UglyTrivia
 
         
         List<Player> lesPlayers = new List<Player>();
-        
-        //int[] purses = new int[6];
 
-        bool[] inPenaltyBox = new bool[6];
+        //bool[] inPenaltyBox = new bool[6];
 
         LinkedList<string> popQuestions = new LinkedList<string>();
         LinkedList<string> scienceQuestions = new LinkedList<string>();
@@ -50,8 +48,7 @@ namespace UglyTrivia
 
             var unPlayer = new Player(playerName);
             lesPlayers.Add(unPlayer);
-            //purses[howManyPlayers()] = 0;
-            inPenaltyBox[howManyPlayers()] = false;
+            //inPenaltyBox[howManyPlayers()] = false;
             
             Console.WriteLine(unPlayer.Name + " was added");
             Console.WriteLine("They are player number " + lesPlayers.Count);
@@ -68,7 +65,8 @@ namespace UglyTrivia
             Console.WriteLine(lesPlayers[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
-            if (inPenaltyBox[currentPlayer])
+            //if (inPenaltyBox[currentPlayer])
+            if (lesPlayers[currentPlayer].InPenaltyBox)
             {
                 if (roll % 2 != 0)
                 {
@@ -146,18 +144,17 @@ namespace UglyTrivia
 
         public bool wasCorrectlyAnswered()
         {
-            if (inPenaltyBox[currentPlayer])
+            //if (inPenaltyBox[currentPlayer])
+            if (lesPlayers[currentPlayer].InPenaltyBox)
             {
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     lesPlayers[currentPlayer].Purse++;
-                    //purses[currentPlayer]++;
                     Console.WriteLine(lesPlayers[currentPlayer]
                             + " now has "
                             + lesPlayers[currentPlayer].Purse
                             + " Gold Coins.");
-                    //+ purses[currentPlayer]
                     bool winner = didPlayerWin();
                     currentPlayer++;
                     if (currentPlayer == lesPlayers.Count) currentPlayer = 0;
@@ -179,13 +176,11 @@ namespace UglyTrivia
 
                 Console.WriteLine("Answer was corrent!!!!");
                 lesPlayers[currentPlayer].Purse++;
-                //purses[currentPlayer]++;
                 Console.WriteLine(lesPlayers[currentPlayer]
                         + " now has "
                         + lesPlayers[currentPlayer].Purse
                         + " Gold Coins.");
-
-                //+ purses[currentPlayer]
+                
                 bool winner = didPlayerWin();
                 currentPlayer++;
                 if (currentPlayer == lesPlayers.Count) currentPlayer = 0;
@@ -198,7 +193,8 @@ namespace UglyTrivia
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(lesPlayers[currentPlayer] + " was sent to the penalty box");
-            inPenaltyBox[currentPlayer] = true;
+            //inPenaltyBox[currentPlayer] = true;
+            lesPlayers[currentPlayer].InPenaltyBox = true;
 
             currentPlayer++;
             if (currentPlayer == lesPlayers.Count) currentPlayer = 0;
@@ -209,7 +205,6 @@ namespace UglyTrivia
         private bool didPlayerWin()
         {
             return !(lesPlayers[currentPlayer].Purse == 6);
-            //return !(purses[currentPlayer] == 6);
         }
     }
 

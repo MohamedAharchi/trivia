@@ -10,12 +10,14 @@ namespace Trivia
         private string name;
         private int place;
         private int purse;
+        private bool inPenaltyBox;
 
         public Player(string aName)
         {
             this.name = aName;
             this.place = 0;
             this.purse = 0;
+            this.inPenaltyBox = false;
         }
 
         public string Name
@@ -33,6 +35,12 @@ namespace Trivia
         {
             get { return purse; }
             set { purse = value; }
+        }
+
+        public bool InPenaltyBox
+        {
+            get { return inPenaltyBox; }
+            set { inPenaltyBox = value; }
         }
 
         public override string ToString()
