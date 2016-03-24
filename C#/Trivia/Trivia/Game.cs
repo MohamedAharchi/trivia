@@ -12,8 +12,6 @@ namespace UglyTrivia
         
         List<Player> lesPlayers = new List<Player>();
 
-        //bool[] inPenaltyBox = new bool[6];
-
         LinkedList<string> popQuestions = new LinkedList<string>();
         LinkedList<string> scienceQuestions = new LinkedList<string>();
         LinkedList<string> sportsQuestions = new LinkedList<string>();
@@ -48,7 +46,6 @@ namespace UglyTrivia
 
             var unPlayer = new Player(playerName);
             lesPlayers.Add(unPlayer);
-            //inPenaltyBox[howManyPlayers()] = false;
             
             Console.WriteLine(unPlayer.Name + " was added");
             Console.WriteLine("They are player number " + lesPlayers.Count);
@@ -64,8 +61,7 @@ namespace UglyTrivia
         {
             Console.WriteLine(lesPlayers[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
-
-            //if (inPenaltyBox[currentPlayer])
+            
             if (lesPlayers[currentPlayer].InPenaltyBox)
             {
                 if (roll % 2 != 0)
@@ -144,7 +140,6 @@ namespace UglyTrivia
 
         public bool wasCorrectlyAnswered()
         {
-            //if (inPenaltyBox[currentPlayer])
             if (lesPlayers[currentPlayer].InPenaltyBox)
             {
                 if (isGettingOutOfPenaltyBox)
@@ -193,7 +188,6 @@ namespace UglyTrivia
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(lesPlayers[currentPlayer] + " was sent to the penalty box");
-            //inPenaltyBox[currentPlayer] = true;
             lesPlayers[currentPlayer].InPenaltyBox = true;
 
             currentPlayer++;
