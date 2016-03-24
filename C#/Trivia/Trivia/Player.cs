@@ -9,14 +9,19 @@ namespace Trivia
     {
         private string name;
 
-        public string getName()
-        {
-            return this.name;
-        }
-
-        public void setName(string aName)
+        public Player(string aName)
         {
             this.name = aName;
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public override string ToString()
+        {
+            return this.name;
         }
     }
 }
