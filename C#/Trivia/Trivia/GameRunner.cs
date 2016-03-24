@@ -14,31 +14,34 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
-            Game aGame = new Game();
-
-            aGame.add("Chet");
-            aGame.add("Pat");
-            aGame.add("Sue");
-
-            Random rand = new Random();
-
-            do
+            for (var i = 0; i < 100; i++)
             {
+                var aGame = new Game();
 
-                aGame.roll(rand.Next(5) + 1);
+                aGame.add("Chet");
+                aGame.add("Pat");
+                aGame.add("Sue");
 
-                if (rand.Next(9) == 7)
+                Random rand = new Random();
+
+                do
                 {
-                    notAWinner = aGame.wrongAnswer();
-                }
-                else
-                {
-                    notAWinner = aGame.wasCorrectlyAnswered();
-                }
+
+                    aGame.roll(rand.Next(5) + 1);
+
+                    if (rand.Next(9) == 7)
+                    {
+                        notAWinner = aGame.wrongAnswer();
+                    }
+                    else
+                    {
+                        notAWinner = aGame.wasCorrectlyAnswered();
+                    }
 
 
 
-            } while (notAWinner);
+                } while (notAWinner);
+            }
 
         }
 
