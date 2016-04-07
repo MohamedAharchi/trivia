@@ -38,7 +38,6 @@ namespace Trivia
         public bool InPenaltyBox
         {
             get { return inPenaltyBox; }
-            set { inPenaltyBox = value; }
         }
 
         public override string ToString()
@@ -57,9 +56,9 @@ namespace Trivia
             if (this.place > 11) this.place = this.place - 12;
         }
 
-        public void isInPenlty()
+        public void isInPenaltyBox()
         {
-            this.InPenaltyBox = true;
+            this.inPenaltyBox = true;
         }
     }
 }
