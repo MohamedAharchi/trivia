@@ -56,5 +56,10 @@ namespace Trivia
             this.place = this.place + roll;
             if (this.place > 11) this.place = this.place - 12;
         }
+
+        public void isInPenlty()
+        {
+            this.InPenaltyBox = true;
+        }
     }
 }
