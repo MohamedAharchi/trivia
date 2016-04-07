@@ -47,5 +47,10 @@ namespace Trivia
         {
             return this.name;
         }
+
+        public void winOnePurse()
+        {
+            this.Purse++;
+        }
     }
 }

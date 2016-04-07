@@ -145,7 +145,7 @@ namespace UglyTrivia
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
-                    lesPlayers[currentPlayer].Purse++;
+                    lesPlayers[currentPlayer].winOnePurse();
                     Console.WriteLine(lesPlayers[currentPlayer]
                             + " now has "
                             + lesPlayers[currentPlayer].Purse
@@ -170,7 +170,7 @@ namespace UglyTrivia
             {
 
                 Console.WriteLine("Answer was corrent!!!!");
-                lesPlayers[currentPlayer].Purse++;
+                lesPlayers[currentPlayer].winOnePurse();
                 Console.WriteLine(lesPlayers[currentPlayer]
                         + " now has "
                         + lesPlayers[currentPlayer].Purse
