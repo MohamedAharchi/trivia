@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace UglyTrivia
+{
+    internal class QuestionStack
+    {
+        private LinkedList<string> questions = new LinkedList<string>();
+
+        public QuestionStack(string category)
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                questions.AddLast(category + " Question " + i);
+            }
+        }
+
+        public void PiocherEtPoserQuestion()
+        {
+            Console.WriteLine(questions.First());
+            questions.RemoveFirst();
+        }
+    }
+}

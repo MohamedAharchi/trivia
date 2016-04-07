@@ -9,33 +9,22 @@ namespace UglyTrivia
     public class Game
     {
 
-        
+
         List<Player> lesPlayers = new List<Player>();
 
-        LinkedList<string> popQuestions = new LinkedList<string>();
-        LinkedList<string> scienceQuestions = new LinkedList<string>();
-        LinkedList<string> sportsQuestions = new LinkedList<string>();
-        LinkedList<string> rockQuestions = new LinkedList<string>();
+        Dictionary<string, QuestionStack> questionsByCategory = new Dictionary<string, QuestionStack>();
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
 
         public Game()
         {
-            for (int i = 0; i < 50; i++)
-            {
-                popQuestions.AddLast("Pop Question " + i);
-                scienceQuestions.AddLast(("Science Question " + i));
-                sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(createRockQuestion(i));
-            }
+            questionsByCategory["Pop"] = new QuestionStack("Pop");
+            questionsByCategory["Science"] = new QuestionStack("Science");
+            questionsByCategory["Sports"] = new QuestionStack("Sports");
+            questionsByCategory["Rock"] = new QuestionStack("Rock");
         }
-
-        public String createRockQuestion(int index)
-        {
-            return "Rock Question " + index;
-        }
-
+        
         public bool isPlayable()
         {
             return (howManyPlayers() >= 2);
@@ -46,7 +35,7 @@ namespace UglyTrivia
 
             var unPlayer = new Player(playerName);
             lesPlayers.Add(unPlayer);
-            
+
             Console.WriteLine(unPlayer.Name + " was added");
             Console.WriteLine("They are player number " + lesPlayers.Count);
             return true;
@@ -61,7 +50,7 @@ namespace UglyTrivia
         {
             Console.WriteLine(lesPlayers[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
-            
+
             if (lesPlayers[currentPlayer].InPenaltyBox)
             {
                 if (roll % 2 != 0)
@@ -70,7 +59,7 @@ namespace UglyTrivia
 
                     Console.WriteLine(lesPlayers[currentPlayer] + " is getting out of the penalty box");
                     lesPlayers[currentPlayer].updatePlace(roll);
-                    
+
                     Console.WriteLine(lesPlayers[currentPlayer]
                             + "'s new location is "
                             + lesPlayers[currentPlayer].Place);
@@ -99,26 +88,7 @@ namespace UglyTrivia
 
         private void askQuestion()
         {
-            if (currentCategory() == "Pop")
-            {
-                Console.WriteLine(popQuestions.First());
-                popQuestions.RemoveFirst();
-            }
-            if (currentCategory() == "Science")
-            {
-                Console.WriteLine(scienceQuestions.First());
-                scienceQuestions.RemoveFirst();
-            }
-            if (currentCategory() == "Sports")
-            {
-                Console.WriteLine(sportsQuestions.First());
-                sportsQuestions.RemoveFirst();
-            }
-            if (currentCategory() == "Rock")
-            {
-                Console.WriteLine(rockQuestions.First());
-                rockQuestions.RemoveFirst();
-            }
+            questionsByCategory[currentCategory()].PiocherEtPoserQuestion();
         }
 
 
@@ -173,7 +143,7 @@ namespace UglyTrivia
                         + " now has "
                         + lesPlayers[currentPlayer].Purse
                         + " Gold Coins.");
-                
+
                 bool winner = didPlayerWin();
                 currentPlayer++;
                 if (currentPlayer == lesPlayers.Count) currentPlayer = 0;
@@ -199,5 +169,4 @@ namespace UglyTrivia
             return !(lesPlayers[currentPlayer].Purse == 6);
         }
     }
-
 }
