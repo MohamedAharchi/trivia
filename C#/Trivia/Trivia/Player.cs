@@ -56,7 +56,7 @@ namespace Trivia
             if (this.place > 11) this.place = this.place - 12;
         }
 
-        public void isInPenaltyBox()
+        public void goInPenaltyBox()
         {
             this.inPenaltyBox = true;
         }
