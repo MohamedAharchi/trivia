@@ -69,8 +69,7 @@ namespace UglyTrivia
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(lesPlayers[currentPlayer] + " is getting out of the penalty box");
-                    lesPlayers[currentPlayer].Place = lesPlayers[currentPlayer].Place + roll;
-                    if (lesPlayers[currentPlayer].Place > 11) lesPlayers[currentPlayer].Place = lesPlayers[currentPlayer].Place - 12;
+                    lesPlayers[currentPlayer].updatePlace(roll);
                     
                     Console.WriteLine(lesPlayers[currentPlayer]
                             + "'s new location is "
@@ -87,8 +86,7 @@ namespace UglyTrivia
             }
             else
             {
-                lesPlayers[currentPlayer].Place = lesPlayers[currentPlayer].Place + roll;
-                if (lesPlayers[currentPlayer].Place > 11) lesPlayers[currentPlayer].Place = lesPlayers[currentPlayer].Place - 12;
+                lesPlayers[currentPlayer].updatePlace(roll);
 
                 Console.WriteLine(lesPlayers[currentPlayer]
                         + "'s new location is "

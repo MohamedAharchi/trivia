@@ -28,13 +28,11 @@ namespace Trivia
         public int Place
         {
             get { return place; }
-            set { place = value; }
         }
 
         public int Purse
         {
             get { return purse; }
-            set { purse = value; }
         }
 
         public bool InPenaltyBox
@@ -50,7 +48,13 @@ namespace Trivia
 
         public void winOnePurse()
         {
-            this.Purse++;
+            this.purse++;
+        }
+
+        public void updatePlace(int roll)
+        {
+            this.place = this.place + roll;
+            if (this.place > 11) this.place = this.place - 12;
         }
     }
 }
