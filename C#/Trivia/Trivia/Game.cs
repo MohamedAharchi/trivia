@@ -12,17 +12,22 @@ namespace UglyTrivia
 
         List<Player> lesPlayers = new List<Player>();
 
-        Dictionary<string, QuestionStack> questionsByCategory = new Dictionary<string, QuestionStack>();
+        /*Dictionary<string, QuestionStack> questionsByCategory = new Dictionary<string, QuestionStack>();*/
+        Question questionGlobal = new Question();
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
 
         public Game()
         {
-            questionsByCategory["Pop"] = new QuestionStack("Pop");
+            questionGlobal.addCategory("Pop");
+            questionGlobal.addCategory("Science");
+            questionGlobal.addCategory("Sports");
+            questionGlobal.addCategory("Rock");
+            /*questionsByCategory["Pop"] = new QuestionStack("Pop");
             questionsByCategory["Science"] = new QuestionStack("Science");
             questionsByCategory["Sports"] = new QuestionStack("Sports");
-            questionsByCategory["Rock"] = new QuestionStack("Rock");
+            questionsByCategory["Rock"] = new QuestionStack("Rock");*/
         }
         
         public bool isPlayable()
@@ -88,7 +93,8 @@ namespace UglyTrivia
 
         private void askQuestion()
         {
-            questionsByCategory[currentCategory()].PiocherEtPoserQuestion();
+            questionGlobal.askQuestion(currentCategory());
+            /*questionsByCategory[currentCategory()].askQuestion();*/
         }
 
 

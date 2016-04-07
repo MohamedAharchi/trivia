@@ -18,6 +18,11 @@ namespace Trivia
         {
             questionsByCategory[category] = new QuestionStack(category);
         }
+
+        public void askQuestion(string category)
+        {
+            questionsByCategory[category].askQuestion();
+        }
         
     }
 }

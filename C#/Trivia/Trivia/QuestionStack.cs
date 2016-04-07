@@ -16,7 +16,7 @@ namespace UglyTrivia
             }
         }
 
-        public void PiocherEtPoserQuestion()
+        public void askQuestion()
         {
             Console.WriteLine(questions.First());
             questions.RemoveFirst();
