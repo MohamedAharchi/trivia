@@ -11,8 +11,6 @@ namespace UglyTrivia
 
 
         List<Player> lesPlayers = new List<Player>();
-
-        /*Dictionary<string, QuestionStack> questionsByCategory = new Dictionary<string, QuestionStack>();*/
         Question questionGlobal = new Question();
 
         int currentPlayer = 0;
@@ -24,10 +22,6 @@ namespace UglyTrivia
             questionGlobal.addCategory("Science");
             questionGlobal.addCategory("Sports");
             questionGlobal.addCategory("Rock");
-            /*questionsByCategory["Pop"] = new QuestionStack("Pop");
-            questionsByCategory["Science"] = new QuestionStack("Science");
-            questionsByCategory["Sports"] = new QuestionStack("Sports");
-            questionsByCategory["Rock"] = new QuestionStack("Rock");*/
         }
         
         public bool isPlayable()
@@ -94,22 +88,13 @@ namespace UglyTrivia
         private void askQuestion()
         {
             questionGlobal.askQuestion(currentCategory());
-            /*questionsByCategory[currentCategory()].askQuestion();*/
         }
 
 
         private String currentCategory()
         {
-            if (lesPlayers[currentPlayer].Place == 0) return "Pop";
-            if (lesPlayers[currentPlayer].Place == 4) return "Pop";
-            if (lesPlayers[currentPlayer].Place == 8) return "Pop";
-            if (lesPlayers[currentPlayer].Place == 1) return "Science";
-            if (lesPlayers[currentPlayer].Place == 5) return "Science";
-            if (lesPlayers[currentPlayer].Place == 9) return "Science";
-            if (lesPlayers[currentPlayer].Place == 2) return "Sports";
-            if (lesPlayers[currentPlayer].Place == 6) return "Sports";
-            if (lesPlayers[currentPlayer].Place == 10) return "Sports";
-            return "Rock";
+            string category = questionGlobal.getCategory(lesPlayers[currentPlayer].Place);
+            return category;
         }
 
         public bool wasCorrectlyAnswered()
