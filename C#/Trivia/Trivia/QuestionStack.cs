@@ -12,7 +12,7 @@ namespace UglyTrivia
         {
             for (int i = 0; i < 50; i++)
             {
-                questions.AddLast(category + " Question " + i);
+                questions.AddLast(category + " Questions " + i);
             }
         }
 

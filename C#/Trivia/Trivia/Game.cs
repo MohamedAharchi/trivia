@@ -11,19 +11,19 @@ namespace UglyTrivia
 
 
         List<Player> lesPlayers = new List<Player>();
-        Question questionGlobal = new Question();
+        Questions _questionsGlobal = new Questions();
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
 
         public Game()
         {
-            questionGlobal.addCategory("Pop");
-            questionGlobal.addCategory("Science");
-            questionGlobal.addCategory("Sports");
-            questionGlobal.addCategory("Rock");
+            _questionsGlobal.addCategory("Pop");
+            _questionsGlobal.addCategory("Science");
+            _questionsGlobal.addCategory("Sports");
+            _questionsGlobal.addCategory("Rock");
         }
-        
+
         public bool isPlayable()
         {
             return (howManyPlayers() >= 2);
@@ -63,7 +63,7 @@ namespace UglyTrivia
                             + "'s new location is "
                             + lesPlayers[currentPlayer].Place);
                     Console.WriteLine("The category is " + currentCategory());
-                    askQuestion();
+                    _questionsGlobal.askQuestion(currentCategory());
                 }
                 else
                 {
@@ -80,20 +80,19 @@ namespace UglyTrivia
                         + "'s new location is "
                         + lesPlayers[currentPlayer].Place);
                 Console.WriteLine("The category is " + currentCategory());
-                askQuestion();
+                _questionsGlobal.askQuestion(currentCategory());
             }
 
-        }
-
-        private void askQuestion()
-        {
-            questionGlobal.askQuestion(currentCategory());
         }
 
 
         private String currentCategory()
         {
-            string category = questionGlobal.getCategory(lesPlayers[currentPlayer].Place);
+            var place = lesPlayers[currentPlayer].Place;
+            string category = "Rock";
+            if (place % 4 == 0) category = "Pop";
+            else if (place % 4 == 1) category = "Science";
+            else if (place % 4 == 2) category = "Sports";
             return category;
         }
 
@@ -145,7 +144,7 @@ namespace UglyTrivia
 
         public bool wrongAnswer()
         {
-            Console.WriteLine("Question was incorrectly answered");
+            Console.WriteLine("Questions was incorrectly answered");
             Console.WriteLine(lesPlayers[currentPlayer] + " was sent to the penalty box");
             lesPlayers[currentPlayer].goInPenaltyBox();
 
