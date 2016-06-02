@@ -17,7 +17,8 @@ namespace Trivia
             
             for (var i = 0; i < 100; i++)
             {
-                var aGame = new Game();
+                int nbPursesToWin = 6;
+                var aGame = new Game(nbPursesToWin);
 
                 aGame.add("Chet");
                 aGame.add("Pat");

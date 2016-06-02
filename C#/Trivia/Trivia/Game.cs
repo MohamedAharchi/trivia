@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,21 @@ namespace UglyTrivia
 {
     public class Game
     {
-
-
-        List<Player> lesPlayers = new List<Player>();
-        Questions _questionsGlobal = new Questions();
+        private readonly int nbPursesToWin = 6;
+        private readonly List<Player> lesPlayers = new List<Player>();
+        private readonly Questions _questionsGlobal = new Questions();
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
+
+        public Game(int nbPurse)
+        {
+            _questionsGlobal.addCategory("Pop");
+            _questionsGlobal.addCategory("Science");
+            _questionsGlobal.addCategory("Sports");
+            _questionsGlobal.addCategory("Rock");
+            nbPursesToWin = nbPurse;
+        }
 
         public Game()
         {
@@ -156,8 +165,7 @@ namespace UglyTrivia
 
         private bool didPlayerWin()
         {
-            return !(lesPlayers[currentPlayer].Purse == 5);
+            return !(lesPlayers[currentPlayer].Purse == nbPursesToWin);
         }
-        
     }
 }

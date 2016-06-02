@@ -1,0 +1,9 @@
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\bin\Debug\Trivia_Tests.dll
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\bin\Debug\Trivia_Tests.pdb
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\bin\Debug\nunit.framework.dll
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\bin\Debug\nunit.framework.xml
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\obj\Debug\Trivia_Tests.csprojResolveAssemblyReference.cache
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\obj\Debug\Trivia_Tests.dll
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\obj\Debug\Trivia_Tests.pdb
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\bin\Debug\Trivia.exe
+D:\DotNet2\trivia\C#\Trivia\Trivia_Tests\bin\Debug\Trivia.pdb
