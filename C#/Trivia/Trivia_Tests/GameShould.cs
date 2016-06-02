@@ -78,7 +78,7 @@ namespace Trivia_Tests
         }
 
         [Test]
-        public void avoir_3_des_catégories()
+        public void pouvoir_avoir_3_catégories()
         {
             // Arrange
             var questions = new Questions(new[] { "Animaux", "Voiture", "Immobilier" });
