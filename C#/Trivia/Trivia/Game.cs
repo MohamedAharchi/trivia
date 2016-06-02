@@ -3,34 +3,23 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Trivia;
 
-namespace UglyTrivia
+namespace Trivia
 {
     public class Game
     {
         private readonly int nbPursesToWin = 6;
         private readonly List<Player> lesPlayers = new List<Player>();
-        private readonly Questions _questionsGlobal = new Questions();
+        private readonly Questions _questionsGlobal;
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
 
-        public Game(int nbPurse)
+        public Game(int nbPurse = 6, Questions questions = null )
         {
-            _questionsGlobal.addCategory("Pop");
-            _questionsGlobal.addCategory("Science");
-            _questionsGlobal.addCategory("Sports");
-            _questionsGlobal.addCategory("Rock");
-            nbPursesToWin = nbPurse;
-        }
+            _questionsGlobal = questions ?? new Questions();
 
-        public Game()
-        {
-            _questionsGlobal.addCategory("Pop");
-            _questionsGlobal.addCategory("Science");
-            _questionsGlobal.addCategory("Sports");
-            _questionsGlobal.addCategory("Rock");
+            nbPursesToWin = nbPurse;
         }
 
         public bool isPlayable()
@@ -38,7 +27,7 @@ namespace UglyTrivia
             return (howManyPlayers() >= 2);
         }
 
-        public bool add(String playerName)
+        public bool add(string playerName)
         {
 
             var unPlayer = new Player(playerName);
@@ -98,11 +87,7 @@ namespace UglyTrivia
         private String currentCategory()
         {
             var place = lesPlayers[currentPlayer].Place;
-            string category = "Rock";
-            if (place % 4 == 0) category = "Pop";
-            else if (place % 4 == 1) category = "Science";
-            else if (place % 4 == 2) category = "Sports";
-            return category;
+            return _questionsGlobal.currentCategory(place);
         }
 
         public bool wasCorrectlyAnswered()
