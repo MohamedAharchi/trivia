@@ -14,6 +14,7 @@ namespace UglyTrivia
         Questions _questionsGlobal = new Questions();
 
         int currentPlayer = 0;
+        int nbPurseToWin = 0;
         bool isGettingOutOfPenaltyBox;
 
         public Game()
@@ -156,7 +157,12 @@ namespace UglyTrivia
 
         private bool didPlayerWin()
         {
-            return !(lesPlayers[currentPlayer].Purse == 6);
+            return !(lesPlayers[currentPlayer].Purse == nbPurseToWin);
+        }
+
+        public void setNbPurseToWin(int nbPurse)
+        {
+            nbPurseToWin = nbPurse;
         }
     }
 }

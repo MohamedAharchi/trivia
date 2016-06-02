@@ -14,9 +14,15 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
-            for (var i = 0; i < 100; i++)
+            Console.WriteLine("----------------- Bienvenue sur le jeu trivia -------------------");
+            
+            for (var i = 0; i < 10; i++)
             {
                 var aGame = new Game();
+
+                Console.WriteLine("Veuillez choisir le nombre point pour gagner !");
+                int nbPurse = Convert.ToInt32(Console.ReadLine());
+                aGame.setNbPurseToWin(nbPurse);
 
                 aGame.add("Chet");
                 aGame.add("Pat");
