@@ -20,7 +20,7 @@ namespace Trivia
             {
                 var aGame = new Game();
 
-                Console.WriteLine("Veuillez choisir le nombre point pour gagner !");
+                Console.WriteLine("Veuillez choisir le nombre de place pour gagner !");
                 int nbPurse = Convert.ToInt32(Console.ReadLine());
                 aGame.setNbPurseToWin(nbPurse);
 
