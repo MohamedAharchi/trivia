@@ -37,7 +37,7 @@ namespace UglyTrivia
             return players.Count;
         }
 
-        public void roll(int roll)
+        public void roll(int roll, Action<string> afficher)
         {
             Console.WriteLine(players[currentPlayer].Name + " is the current player");
             Console.WriteLine("They have rolled a " + roll);

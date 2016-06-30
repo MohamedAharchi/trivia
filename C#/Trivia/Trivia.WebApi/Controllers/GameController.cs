@@ -16,5 +16,21 @@ namespace Trivia.WebApi.Controllers
             gamesInProgress[gameGuid] = new Game(6, new Questions(new [] { "Sports", "Rock", "Science", "Pop"}));
             return gameGuid;
         }
+
+        [HttpPost]
+        public void AddPlayer(string id, string name)
+        {
+            gamesInProgress[id].add(name);
+        }
+
+        [HttpPost]
+        public string Roll(string id)
+        {
+            var dice = new Random().Next(1, 6);
+            string questionAsked = null;
+            Action<string> afficher = x => questionAsked = x;
+            gamesInProgress[id].roll(dice, afficher);
+            return questionAsked;
+        }
     }
 }
